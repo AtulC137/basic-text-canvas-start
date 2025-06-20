@@ -36,24 +36,35 @@ export const LandingHeader = () => {
           <Logo className="h-8 w-8" />
           <span className="text-xl font-bold text-gray-900">SaveBits</span>
         </Link>
-        {authInitialized && (
-          <div className="flex items-center gap-4">
-            {user ? (
-              <>
-                <Button onClick={() => navigate('/dashboard')} variant="ghost">
-                  Go to Dashboard
+        
+        <div className="flex items-center gap-4">
+          {/* Privacy Policy Link for Google verification */}
+          <Link 
+            to="/privacy" 
+            className="text-sm text-gray-600 hover:text-google-blue transition-colors hidden sm:inline"
+          >
+            Privacy Policy
+          </Link>
+          
+          {authInitialized && (
+            <>
+              {user ? (
+                <>
+                  <Button onClick={() => navigate('/dashboard')} variant="ghost">
+                    Go to Dashboard
+                  </Button>
+                  <Button onClick={handleLogout} variant="outline">
+                    Logout
+                  </Button>
+                </>
+              ) : (
+                <Button onClick={() => navigate('/auth')} variant="outline">
+                  Get Started
                 </Button>
-                <Button onClick={handleLogout} variant="outline">
-                  Logout
-                </Button>
-              </>
-            ) : (
-              <Button onClick={() => navigate('/auth')} variant="outline">
-                Get Started
-              </Button>
-            )}
-          </div>
-        )}
+              )}
+            </>
+          )}
+        </div>
       </div>
     </header>
   );

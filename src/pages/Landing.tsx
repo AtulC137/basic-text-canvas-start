@@ -9,6 +9,7 @@ import AboutDeveloper from "@/components/AboutDeveloper";
 import WhatWeCanDo from "@/components/WhatWeCanDo";
 import React from "react";
 import { Logo } from "@/components/Logo";
+import { Link } from "react-router-dom";
 
 const Landing = () => {
   const navigate = useNavigate();
@@ -36,7 +37,6 @@ const Landing = () => {
   };
 
   // Main layout: two vertical sections
-  // Replace <React.Fragment ... > with <> only or <div> if extra props
   return (
     <>
       <LandingHeader />
@@ -63,9 +63,23 @@ const Landing = () => {
               <br />
               <span className="text-google-green">Instantly.</span>
             </h1>
-            <p className="text-lg md:text-xl text-gray-600 mb-12">
+            <p className="text-lg md:text-xl text-gray-600 mb-8">
               SaveBits compresses and manages your Drive files with one click — no downloads needed.
             </p>
+            
+            {/* Privacy Policy Link - Prominent placement for Google verification */}
+            <div className="mb-8 p-4 bg-white/50 rounded-lg border border-gray-200">
+              <p className="text-sm text-gray-600 mb-2">
+                By using SaveBits, you agree to our data handling practices.
+              </p>
+              <Link 
+                to="/privacy" 
+                className="text-google-blue hover:text-blue-600 font-medium underline underline-offset-2"
+              >
+                Read our Privacy Policy
+              </Link>
+            </div>
+
             <Button
               size="lg"
               onClick={handleGetStarted}
@@ -84,4 +98,3 @@ const Landing = () => {
 };
 
 export default Landing;
-
