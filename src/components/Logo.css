@@ -1,0 +1,111 @@
+
+.cls-1 {
+  fill: #f15a24;
+  animation: cls1 4s ease infinite both;
+}
+
+@keyframes cls1 {
+  0% {
+    fill: #f15a24;
+  }
+
+  34% {
+    fill: #ed1c24;
+  }
+
+  66% {
+    fill: #f7931e;
+  }
+
+  100% {
+    fill: #f15a24;
+  }
+}
+
+.cls-1,
+.cls-2,
+.cls-3 {
+  stroke-width: 0px;
+}
+
+.cls-2 {
+  fill: #f7931e;
+  animation: cls2 4s ease infinite both;
+}
+
+@keyframes cls2 {
+  0% {
+    fill: #f7931e;
+  }
+
+  34% {
+    fill: #f15a24;
+  }
+
+  66% {
+    fill: #ed1c24;
+  }
+
+  100% {
+    fill: #f7931e;
+  }
+}
+
+.cls-3 {
+  fill: #ed1c24;
+  animation: cls3 4s ease infinite both;
+}
+
+@keyframes cls3 {
+  0% {
+    fill: #ed1c24;
+  }
+
+  34% {
+    fill: #f7931e;
+  }
+
+  66% {
+    fill: #f15a24;
+  }
+
+  100% {
+    fill: #ed1c24;
+  }
+}
+
+.cls-4 {
+  display: none;
+}
+
+#triangle {
+  animation: triangle 4s both infinite;
+}
+
+@keyframes triangle {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(15px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* Static styles for non-animated version */
+.static-cls-1 {
+  fill: #f15a24;
+  stroke-width: 0px;
+}
+.static-cls-2 {
+  fill: #f7931e;
+  stroke-width: 0px;
+}
+.static-cls-3 {
+  fill: #ed1c24;
+  stroke-width: 0px;
+}
