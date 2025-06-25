@@ -82,6 +82,10 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const signInWithGoogle = async () => {
     try {
+      // Get current origin dynamically
+      const currentOrigin = window.location.origin;
+      console.log('🔗 Using redirect URL:', `${currentOrigin}/dashboard`);
+      
       const { error } = await supabase.auth.signInWithOAuth({
         provider: 'google',
         options: {
@@ -92,7 +96,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
             prompt: 'consent',
             include_granted_scopes: 'true'
           },
-          redirectTo: `${window.location.origin}/dashboard`
+          // Use current domain instead of hardcoded redirect
+          redirectTo: `${currentOrigin}/dashboard`
         }
       });
 
@@ -106,6 +111,10 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const refreshGoogleAuth = async () => {
     try {
+      // Get current origin dynamically
+      const currentOrigin = window.location.origin;
+      console.log('🔗 Refreshing auth with redirect URL:', currentOrigin);
+      
       const { error } = await supabase.auth.signInWithOAuth({
         provider: 'google',
         options: {
@@ -116,6 +125,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
             prompt: 'consent',
             include_granted_scopes: 'true'
           },
+          // Use current URL instead of hardcoded redirect
           redirectTo: window.location.href
         }
       });
