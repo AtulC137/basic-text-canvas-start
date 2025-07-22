@@ -113,7 +113,7 @@ const DriveView = () => {
         if (!response.ok) throw new Error(`Failed to download ${file.name}`);
         
         const blob = await response.blob();
-        const originalFile = new File([blob], file.name, { type: file.mimeType });
+        const originalFile = new (window as any).File([blob], file.name, { type: file.mimeType || 'application/octet-stream' });
 
         // Compress the file
         let compressedFile: File;
@@ -194,7 +194,7 @@ const DriveView = () => {
         if (!response.ok) throw new Error(`Failed to download ${file.name}`);
         
         const blob = await response.blob();
-        const originalFile = new File([blob], file.name, { type: file.mimeType });
+        const originalFile = new (window as any).File([blob], file.name, { type: file.mimeType || 'application/octet-stream' });
 
         // Compress the file
         let compressedFile: File;
@@ -209,7 +209,7 @@ const DriveView = () => {
         const extension = file.name.substring(file.name.lastIndexOf('.'));
         const newFileName = `${nameWithoutExt}_compressed${extension}`;
         
-        const renamedCompressedFile = new File([compressedFile], newFileName, { type: compressedFile.type });
+        const renamedCompressedFile = new (window as any).File([compressedFile], newFileName, { type: compressedFile.type });
 
         // Upload compressed file as new file
         const uploadResult = await uploadFileToGoogleDrive({
@@ -393,7 +393,7 @@ const DriveView = () => {
       if (!response.ok) throw new Error(`Failed to download ${file.name}`);
       
       const blob = await response.blob();
-      const originalFile = new File([blob], file.name, { type: file.mimeType });
+      const originalFile = new (window as any).File([blob], file.name, { type: file.mimeType || 'application/octet-stream' });
 
       // Compress the file
       let compressedFile: File;
@@ -459,7 +459,7 @@ const DriveView = () => {
       if (!response.ok) throw new Error(`Failed to download ${file.name}`);
       
       const blob = await response.blob();
-      const originalFile = new File([blob], file.name, { type: file.mimeType });
+      const originalFile = new (window as any).File([blob], file.name, { type: file.mimeType || 'application/octet-stream' });
 
       // Compress the file
       let compressedFile: File;
@@ -474,7 +474,7 @@ const DriveView = () => {
       const extension = file.name.substring(file.name.lastIndexOf('.'));
       const newFileName = `${nameWithoutExt}_compressed${extension}`;
       
-      const renamedCompressedFile = new File([compressedFile], newFileName, { type: compressedFile.type });
+      const renamedCompressedFile = new (window as any).File([compressedFile], newFileName, { type: compressedFile.type });
 
       // Upload compressed file as new file
       const uploadResult = await uploadFileToGoogleDrive({

@@ -122,13 +122,18 @@ const FileViewer = () => {
                         >
                           <CardContent className="p-4">
                             <div className="mb-3">
-                              {file.thumbnailLink && file.mimeType.startsWith('image/') ? (
-                                <div className="w-full h-32 rounded-lg overflow-hidden bg-gray-100">
+                              {file.thumbnailLink ? (
+                                <div className="w-full h-32 rounded-lg overflow-hidden bg-gray-100 relative">
                                   <img 
                                     src={file.thumbnailLink} 
                                     alt={file.name}
                                     className="w-full h-full object-cover"
                                   />
+                                  {file.mimeType.startsWith('video/') && (
+                                    <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-30">
+                                      <Video className="w-8 h-8 text-white" />
+                                    </div>
+                                  )}
                                 </div>
                               ) : (
                                 <div className={`w-full h-32 rounded-lg flex items-center justify-center ${getTypeColor(file.mimeType || '')}`}>
